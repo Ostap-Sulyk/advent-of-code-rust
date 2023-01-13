@@ -3,8 +3,15 @@ pub fn task1() -> i32 {
         .lines()
         .map(|x| x.split("x").map(|c| c.parse::<i32>().unwrap()).collect())
         .collect();
-
     data.iter().map(|x| calc_dimensions(x)).sum()
+}
+
+pub fn task2() -> i32 {
+    let data: Vec<Vec<i32>> = include_str!("input.txt")
+        .lines()
+        .map(|x| x.split("x").map(|c| c.parse::<i32>().unwrap()).collect())
+        .collect();
+    data.iter().map(|x| calc_ribbon(x)).sum()
 }
 
 fn calc_dimensions(dimensions: &Vec<i32>) -> i32 {
@@ -21,4 +28,10 @@ fn calc_dimensions(dimensions: &Vec<i32>) -> i32 {
         }
     }
     return 2 * result + smallest;
+}
+
+fn calc_ribbon(dimensions: &Vec<i32>) -> i32 {
+    let mut dims = dimensions.clone();
+    dims.sort();
+    return dims[0] * 2 + dims[1] * 2 + dims[0] * dims[1] * dims[2];
 }
