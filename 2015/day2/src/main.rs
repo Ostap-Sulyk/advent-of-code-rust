@@ -1,4 +1,4 @@
 fn main() {
-    println!("{}", day2::task1());
-    println!("{}", day2::task2());
+    println!("Day 2 task 1: {}", day2::task1());
+    println!("Day 2 task 2: {}", day2::task2());
 }
